@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy...</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div id="app">
         <div id="year"></div>
         <div class="message">
-            Happy new year <brlet year = document.querySelector('#year');
-let yearOld = [2,0,2,5];
-let newYear = [2,0,2,6];
+            Happy Birthday<br>
+            <span style="font-size: 12px; color:aquamarine;" id="nom"></span>
+        </div>
+        <div class="foot">
+            By claudel
+        </div>
+    </div>
+
+    <script>
+      let year = document.querySelector('#year');
+      let yearOld = [2,0];
+      let newYear = [2,1];
 
 class Letter {
     block = document.createElement('div');
@@ -127,13 +136,6 @@ setTimeout(() => {
         }, 3000);
     },5000)
 }, 1000)
-            <span style="font-size: 12px; color:aquamarine;" id="nom"></span>
-        </div>
-        <div class="foot">
-            By claudel
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    </script>
 </body>
 </html>
