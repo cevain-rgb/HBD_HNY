@@ -108,7 +108,7 @@ yearOld.forEach((y, i) => {
 
 const ballon = document.querySelector('.ballon');
 const boule = document.querySelector('.boule');
-const letter = document.querySelectorAll('.letter')[1];
+const letter = document.querySelectorAll('.letter')[dif];
 // initialisation de la position du ballon
 Ballon.deplacer(ballon, 200, -30);
 
@@ -125,7 +125,7 @@ setTimeout(() => {
     setTimeout(() => {
         letter.style.animation = 'retirer 3s ease-in-out forwards';
         setTimeout(() => {
-            letter.firstChild.innerText = newYear[3];
+            letter.firstChild.innerText = newYear[dif];
             boule.style.background = '#ff69b4';
             // boule.style.background = 'aqua';
             letter.style.animation = 'fixer 5s ease-in-out forwards';
