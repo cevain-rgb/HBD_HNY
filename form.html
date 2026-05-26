@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        body {
+            @apply bg-gray-900 text-white;
+
+        }
+        #app {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            overflow: hidden;
+            font-size: 14px;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body class="text-white">
+    <div id="app" class="py-5 space-y-7">
+        <!-- <p>
+            Entrer un nom, annee/age de la personne a qui vous voulez souhaitez 
+            la nouvel an. <br>
+            Ensuite cliquer sur le boutton pour generer un lien que vous enverez 
+            cette personne. <br>
+            Copier puis colle et envoiyer ce lien a la personne via une application 
+            de tchat(Ex: Whatsapp). <br>
+            Lorsqu'il cliquera sur le lien apres reception il vera votre cadeau 
+            suprise. <br>
+            Merci d'avoir utiliser cette modeste realisation. <br>
+            <i>claudel</i>
+        </p> -->
+
+        <form id="hnw-form" class="bg-black bg-opacity-50 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+
+            <div>
+                <label for="name">Nom</label>
+                <input type="text" id="name" 
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="nom, prenom ou pseudo"> <br>
+            </div>
+            <div>
+                <label for="newYear">Année/Age</label>
+                <input type="number" id="newYear" 
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="année/age"> <br>
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" 
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="votre message"></textarea> <br>
+            </div>
+            <button type="submit" 
+            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            id="generer">
+                Generer le lien
+            </button>
+        </form>
+        <hr>
+        <div class="mt-8 grid grid-cols-3 gap-4">  
+            <p id="link"
+                class="col-span-2 block px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-transparent"
+            >
+            </p> 
+            <button id="copier"
+            onclick="copier()"
+            class=" py-2 px-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100">
+            Copier</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('#generer').addEventListener('click', e => {
+            e.preventDefault();
+            let name = document.querySelector('#name').value;
+            name = name.split(' ').join('%20');
+            let newYear = document.querySelector('#newYear').value;
+            let message = document.querySelector('#message').value;
+            oldyear = newYear - 1;
+            document.querySelector('#link').textContent = `https:/cevain-rgb.github.io/HBD_HNY?name=${name}&newYear=${newYear}&message=${message}`;
+        });
+
+        function copier() {
+            const link = document.querySelector('#link').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Le lien a ete copier')
+            })
+        }
+
+    </script>
+</body>
+</html>
